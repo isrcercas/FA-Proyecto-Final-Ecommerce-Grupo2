@@ -71,7 +71,16 @@ Esta es la explicación en detalle del proyecto Ecommerce (en adelante Shop)
 * Html
     * Israel
 
+## Paleta de colores para el proyecto
+### https://coolors.co/palettes/trending 
+### (Podeis mirar a ver que colores os gustan mas)
 
+  * --buff: #cb997eff;
+  * --desert-sand: #ddbea9ff;
+  * --champagne-pink: #ffe8d6ff;
+  * --ash-gray: #b7b7a4ff;
+  * --sage: #a5a58dff;
+  * --reseda-green: #6b705cff;
 
 PASOS A SEGUIR
 
