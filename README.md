@@ -12,7 +12,7 @@ El proyecto será crear plataforma o web Ecommerce de productos.
 
 Esta es la explicación en detalle del proyecto Ecommerce (en adelante Shop)
 
-## Entidades para Shop
+## Entidades para Shop DisCommerce
 
 * USUARIO
   * id (PK)
