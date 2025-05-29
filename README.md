@@ -69,7 +69,7 @@ Esta es la explicación en detalle del proyecto Ecommerce (en adelante Shop)
 * Controller
     * Entre todos
 * Html
-    * Yo
+    * Israel
 
 
 
