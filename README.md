@@ -24,14 +24,16 @@ Esta es la explicación en detalle del proyecto Ecommerce (en adelante Shop)
 * CATEGORIA
   * id (PK)
   * nombre
+  * descripcion
 
-* PRODUCTO
+* PRODUCTO ManytoOne
   * id (PK)
   * nombre
   * descripcion
   * precio
   * stock
-  * image_url
+  * disponible
+  * image_url ? Preguntar a Maria
   * categoria_id (FK)
 
 * COMPRA
@@ -47,5 +49,28 @@ Esta es la explicación en detalle del proyecto Ecommerce (en adelante Shop)
   * dto_compra (duda)
   * compra_id (FK)
   * producto_id (FK)
+  * producto_nombre (FK)
 
 ## CONTROLLERS
+
+
+
+## HTML
+
+ index.html
+ productos.html
+ categorias.html
+ compra.html
+ detalle_compra.html
+
+## Desglose del trabajo
+
+Entities
+ Antonio
+Repositorys
+ Luis Miguel (buscar datos)
+Controller
+ Entre todos
+Html
+ Yo
+
