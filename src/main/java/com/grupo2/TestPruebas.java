@@ -1,8 +1,5 @@
 package com.grupo2;
 
-import com.grupo2.repositories.CategoriaRepository;
-import com.grupo2.repositories.ProductoRepository;
-
 public class TestPruebas
 {
 
