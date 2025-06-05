@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table (name = "detalle_compras")
-public class Detalle_Compra {
+public class DetalleCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +18,10 @@ public class Detalle_Compra {
     @JoinColumn(name = "producto_id")
     private Producto producto;
 
-    public Detalle_Compra() {
+    public DetalleCompra() {
     }
 
-    public Detalle_Compra(Long cantidad, Double precioUnitario, Double descuentoCompra, Compra compra, Producto producto) {
+    public DetalleCompra(Long cantidad, Double precioUnitario, Double descuentoCompra, Compra compra, Producto producto) {
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.descuentoCompra = descuentoCompra;

@@ -18,12 +18,12 @@ public class Compra {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Detalle_Compra> detalles = new ArrayList<>();
+    private List<DetalleCompra> detalles = new ArrayList<>();
 
     public Compra() {
     }
 
-    public Compra(LocalDate fechaDeCompra, Double total, Usuario usuario, List<Detalle_Compra> detalles) {
+    public Compra(LocalDate fechaDeCompra, Double total, Usuario usuario, List<DetalleCompra> detalles) {
         this.fechaDeCompra = fechaDeCompra;
         this.total = total;
         this.usuario = usuario;
@@ -62,11 +62,11 @@ public class Compra {
         this.usuario = usuario;
     }
 
-    public List<Detalle_Compra> getDetalles() {
+    public List<DetalleCompra> getDetalles() {
         return detalles;
     }
 
-    public void setDetalles(List<Detalle_Compra> detalles) {
+    public void setDetalles(List<DetalleCompra> detalles) {
         this.detalles = detalles;
     }
 
