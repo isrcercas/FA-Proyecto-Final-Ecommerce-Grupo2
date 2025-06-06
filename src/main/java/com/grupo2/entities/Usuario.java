@@ -22,11 +22,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombreUsuario, String password, String email, String direccion) {
+    public Usuario(String nombreUsuario, String password, String email, String direccion, List<Compra> compras) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.email = email;
         this.direccion = direccion;
+        this.compras = compras;
     }
 
     public Long getId() {
@@ -67,6 +68,14 @@ public class Usuario {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
 
     @Override
