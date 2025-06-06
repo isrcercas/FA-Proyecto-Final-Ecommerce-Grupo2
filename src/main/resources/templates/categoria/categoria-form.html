@@ -2,12 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Formulario de categoría</title>
 </head>
 <body>
-<div>
-    <h1>Formulario de categoría</h1>
+<div class="container mt-4">
+
+    <h1 class="mb-4">Formulario de categoría</h1>
 
     <form th:action="@{/categorias}" th:object="${categoria}" method="post">
         <input type="hidden" th:field="*{id}">
