@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de categoría</title>
+</head>
+<body>
+<div>
+    <h1>Formulario de categoría</h1>
+
+    <form th:action="@{/categorias}" th:object="${categoria}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div>
+            <label for="nombre">Nombre de la categoría:</label>
+            <input type="text"
+                   id="nombre"
+                   th:field="*{nombre}"
+                   placeholder="Ingrese el nombre de la categoría"
+                   required>
+        </div>
+
+        <div>
+            <a th:href="@{/categorias}">Cancelar</a>
+            <button type="submit">
+                <span>Guardar</span>
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
