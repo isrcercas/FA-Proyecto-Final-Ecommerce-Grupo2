@@ -21,8 +21,9 @@ public class CategoriaController {
 
 
 
-    public CategoriaController(CategoriaRepository categoriaRepository){
+    public CategoriaController(CategoriaRepository categoriaRepository, ProductoRepository productoRepository){
         this.categoriaRepository = categoriaRepository;
+        this.productoRepository = productoRepository;
     }
 
     @GetMapping("/categorias")
@@ -61,17 +62,17 @@ public class CategoriaController {
 
         return "redirect:/categorias";
     }
-
+/*
     @PostMapping("/categorias/{id}/eliminar")
     public String delete(@PathVariable Long id) {
         if (productoRepository.countByCategoria_Id(id) > 0) {
-            return "redirect:/categorias?error=true";
+            return "redirect:/categoria/categorias?error=true";
         }
         categoriaRepository.deleteById(id);
 
-        return "redirect:/categorias";
+        return "redirect:/categoria/categorias";
     }
-
+*/
     // filtrar categorías por nombre
     @GetMapping("/categorias/buscar") // http:localhost:8080/categorias/buscar?nombre=frutas
     public String findByName(Model model, @RequestParam("nombre") String nombre) {

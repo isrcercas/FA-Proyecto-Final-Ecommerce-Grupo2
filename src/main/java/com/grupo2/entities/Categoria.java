@@ -13,6 +13,7 @@ public class Categoria {
     private Long id;
     @Column (nullable = false)
     private String nombre;
+
     @OneToMany (mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Producto> productos = new ArrayList<>();
 
