@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Agregamos enlace a BootStrap -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Lista Productos</title>
+</head>
+<body>
+
+<div class="container mt-4">
+
+<div>
+    <h2 class="mb-4">Listado de Productos</h2>
+    <span th:each="producto : ${productos}"></span>
+
+    <h4 class="mb-5 mt-5">Cantidad de productos creados: <span th:text="${productos.size()}"></span></h4>
+
+</div>
+
+    <!-- Tabla muestra productos -->
+    <div th:if="${productos.isEmpty()}" class="alert alert-warning">
+        <p class="mb-0">No hay productos disponibles en este momento.</p>
+    </div>
+    <div th:unless="${productos.isEmpty()}">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoría</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.id}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.descripcion}"></td>
+                <td th:text="${#numbers.formatDecimal(producto.precio, 1, 2)} + ' €'"></td>
+                <td>
+                            <span th:text="${producto.stock} + (${producto.stock == 1} ? ' unidad' : ' unidades')"
+                            >
+                            </span>
+                </td>
+                <td th:text="${producto.categoria != null ? producto.categoria.nombre : 'Sin categoría'}"></td>
+                <td th:text="${producto.imageUrl != null ? producto.imageUrl : 'Sin imagen'}"></td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a th:href="@{/productos/{id}(id=${producto.id})}" class="btn btn-primary btn-sm w-100">
+                            Ver
+                        </a>
+                        <a th:href="@{/productos/{id}/editar(id=${producto.id})}" class="btn btn-warning btn-sm w-100">
+                            Editar
+                        </a>
+                        <form th:action="@{/productos/{id}/eliminar(id=${producto.id})}" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm w-100">
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+</body>
+</html>
