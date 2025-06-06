@@ -168,7 +168,7 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario.get());
         return "usuario/usuario-detail";
     }
-
+/*
     // Eliminar usuario
     @PostMapping("/eliminar/{id}")
     public String eliminarUsuario(@PathVariable Long id, Model model) {
@@ -183,4 +183,6 @@ public class UsuarioController {
         model.addAttribute("usuarios", usuarios);
         return "usuario/usuario-list";
     }
+    */
+
 }
