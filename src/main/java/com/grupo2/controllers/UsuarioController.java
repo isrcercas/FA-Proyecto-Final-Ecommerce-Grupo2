@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/usuarios")
+//@RequestMapping("/usuarios")
 public class UsuarioController {
 
     private UsuarioRepository usuarioRepository;
@@ -30,7 +30,7 @@ public class UsuarioController {
 
         return "usuario/usuario-list";
     }
-
+/*
     // Mostrar formulario de registro
     @GetMapping("/registro")
     public String mostrarFormularioRegistro() {
@@ -82,7 +82,7 @@ public class UsuarioController {
             return "usuario/usuario-form";
         }
     }
-
+    /*
     // Obtener todos los usuarios
     @GetMapping("/lista")
     public String obtenerTodosLosUsuarios(Model model) {
@@ -90,7 +90,8 @@ public class UsuarioController {
         model.addAttribute("usuarios", usuarios);
         return "usuario/usuario-list";
     }
-
+*/
+    /*
     // Obtener usuario por ID
     @GetMapping("/{id}")
     public String obtenerUsuarioPorId(@PathVariable Long id, Model model) {
