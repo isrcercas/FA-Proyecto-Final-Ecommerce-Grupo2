@@ -1,6 +1,7 @@
 package com.grupo2.controllers;
 
 
+import com.grupo2.entities.Categoria;
 import com.grupo2.entities.Compra;
 import com.grupo2.entities.Usuario;
 import com.grupo2.repositories.UsuarioRepository;
@@ -19,6 +20,15 @@ public class UsuarioController {
 
     public UsuarioController(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+    }
+
+    @GetMapping("/usuarios")
+    public String findAll(Model model){
+
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        model.addAttribute("usuarios", usuarios);
+
+        return "usuario/usuario-list";
     }
 
     // Mostrar formulario de registro

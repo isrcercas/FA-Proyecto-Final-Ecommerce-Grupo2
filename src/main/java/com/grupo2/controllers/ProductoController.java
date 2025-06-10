@@ -36,4 +36,19 @@ public class ProductoController {
         // nos lleva al html
         return "producto/producto-list";
     }
+
+    @GetMapping("")
+    public String findAllIndex(Model model) {
+
+        // esta correcto, pero no se aplica el principio de responsabilidad unica
+        // model.addAttribute("productos", productoRepository.findAll());
+        List<Producto> productos = productoRepository.findAll();
+        model.addAttribute("productos", productos);
+        model.addAttribute("categorias", categoriaRepository.findAll());
+
+        // nos lleva al html
+        return "index";
+    }
+
+
 }
