@@ -34,7 +34,18 @@ public class CategoriaController {
 
         return "categoria/categoria-list";
     }
+    @GetMapping("/categorias/{id}")
+    public String finById(Model model, @PathVariable Long id){
+        // la clase Optinal se utiliza si vemos que no pueda existir
+        Optional<Categoria> categoriaOpt = categoriaRepository.findById(id);
 
+        if(categoriaOpt.isPresent()){
+            model.addAttribute("categoria", categoriaOpt.get());
+        }else{
+            model.addAttribute("error", "No se han encontrado categorias");
+        }
+        return "categoria/categoria-detail";
+    }
 
     @GetMapping("/categorias/nueva")
     public String createForm(Model model) {

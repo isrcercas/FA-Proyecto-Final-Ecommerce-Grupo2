@@ -73,7 +73,7 @@ public class ProductoController {
 
         return "producto/producto-form";
     }
-
+/*
     // procesar formulario (crear o actualizar)
     @PostMapping("/productos") // podría ser @PostMapping("/productos/form") si en el formulario pusiera th:action="@{/productos/form}"
     public String saveForm(@ModelAttribute Producto producto) {
@@ -81,7 +81,7 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
-
+*/
     // eliminar producto (con funciones lambda)
     @PostMapping("/productos/{id}/eliminar")
     public String delete(@PathVariable Long id) {
@@ -93,7 +93,7 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
-
+/*
     // FILTROS
     // filtrar productos por categoria
     @GetMapping("/productos/categoria/{categoriaId}") // http://localhost:8080/productos/categoria/1
@@ -116,5 +116,5 @@ public class ProductoController {
 
         return "producto/producto-list";
     }
-
+*/
 }
