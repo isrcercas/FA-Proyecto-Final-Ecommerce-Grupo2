@@ -37,6 +37,16 @@ public class ProductoController {
         return "producto/producto-list";
     }
 
+    @GetMapping("/") // http://localhost:8082/productos
+    public String findAllIndex(Model model) {
+        // crear una lista con todos los productos
+        List<Producto> productos = productoRepository.findAll();
+        model.addAttribute("productos", productos);
+        model.addAttribute("categorias", categoriaRepository.findAll());
+
+        return "index";
+    }
+/*
     @GetMapping("/productos/{id}") // http://localhost:8082/productos/1
     public String findById(Model model, @PathVariable Long id) {
         Optional<Producto> productoOpt = productoRepository.findById(id);
@@ -81,8 +91,7 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
-*/
-/*
+
     // FILTROS
     // filtrar productos por categoria
     @GetMapping("/productos/categoria/{categoriaId}") // http://localhost:8080/productos/categoria/1
