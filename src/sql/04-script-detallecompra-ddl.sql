@@ -1,5 +1,5 @@
 -- Creación de la tabla detalle_compra
-CREATE TABLE IF NOT EXISTS detalle_compra (
+CREATE TABLE IF NOT EXISTS detalle_compras (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nombreUsuario VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,

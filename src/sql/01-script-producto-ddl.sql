@@ -1,6 +1,6 @@
 -- Creación de la tabla Producto
 
-CREATE TABLE IF NOT EXISTS producto (
+CREATE TABLE IF NOT EXISTS productos (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(400),

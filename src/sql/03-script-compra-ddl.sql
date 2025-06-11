@@ -1,5 +1,5 @@
 -- Creación de la tabla compra
-CREATE TABLE IF NOT EXISTS compra (
+CREATE TABLE IF NOT EXISTS compras (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     fechaDeCompra VARCHAR(100) NOT NULL,
     total VARCHAR(100) NOT NULL,
