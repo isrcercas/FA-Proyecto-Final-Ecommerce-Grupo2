@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de producto</title>
+</head>
+<body>
+
+
+<!-- con operador ternario -->
+<h1 th:text="${producto.id != null ? 'Modificar producto ' + producto.id : 'Crear nuevo producto'}" ></h1>
+
+<form th:action="@{/productos}" th:object="${producto}" method="post">
+
+    <!-- campo oculto para ID -->
+    <input type="hidden" th:field="*{id}">
+
+    <!-- nombre del producto -->
+    <div>
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text"
+               id="nombre"
+               th:field="*{nombre}"
+               placeholder="Ingrese el nombre del producto"
+               required>
+    </div>
+    <br>
+
+    <!-- precio -->
+    <div>
+        <label for="precio">Precio:</label>
+        <input type="number"
+               id="precio"
+               th:field="*{precio}"
+               step="0.01"
+               min="0"
+               placeholder="0.00">
+    </div>
+    <br>
+
+    <!-- stock -->
+    <div>
+        <label for="stock">Stock:</label>
+        <input type="number"
+               id="stock"
+               th:field="*{stock}"
+               min="0"
+               placeholder="0">
+    </div>
+    <br>
+
+    <!-- imageUrl -->
+    <div>
+        <input type="text"
+               id="imageUrl"
+               th:field="*{imageUrl}">
+    </div>
+    <br>
+
+    <!-- categoría -->
+    <div>
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" th:field="*{categoria}">
+            <option value="">-- Seleccione una categoría --</option>
+            <option th:each="cat : ${categorias}"
+                    th:value="${cat.id}"
+                    th:text="${cat.nombre}">
+            </option>
+        </select>
+    </div>
+    <br>
+
+    <!-- botones -->
+    <div>
+        <a th:href="@{/productos}">Cancelar</a>
+        <button type="submit">
+            <span th:if="${producto.id != null}">Actualizar</span>
+            <span th:if="${producto.id == null}">Guardar</span>
+            <!-- operador ternario -->
+            <!--<span th:text="${producto.id != null ? 'Actualizar' : 'Guardar'}"></span>-->
+        </button>
+    </div>
+</form>
+</body>
+</html>
