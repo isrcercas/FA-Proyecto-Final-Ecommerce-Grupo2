@@ -82,17 +82,6 @@ public class ProductoController {
         return "redirect:/productos";
     }
 */
-    // eliminar producto (con funciones lambda)
-    @PostMapping("/productos/{id}/eliminar")
-    public String delete(@PathVariable Long id) {
-        Optional<Producto> productoOpt = productoRepository.findById(id);
-
-        // eliminar el producto
-
-        productoRepository.deleteById(id);
-
-        return "redirect:/productos";
-    }
 /*
     // FILTROS
     // filtrar productos por categoria
