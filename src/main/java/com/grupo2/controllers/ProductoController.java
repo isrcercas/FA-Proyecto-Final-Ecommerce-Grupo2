@@ -37,7 +37,7 @@ public class ProductoController {
         return "producto/producto-list";
     }
 
-    @GetMapping("/") // http://localhost:8082/productos
+    @GetMapping("/") // http://localhost:8082/index.html
     public String findAllIndex(Model model) {
         // crear una lista con todos los productos
         List<Producto> productos = productoRepository.findAll();
@@ -46,7 +46,7 @@ public class ProductoController {
 
         return "index";
     }
-/*
+
     @GetMapping("/productos/{id}") // http://localhost:8082/productos/1
     public String findById(Model model, @PathVariable Long id) {
         Optional<Producto> productoOpt = productoRepository.findById(id);
@@ -65,9 +65,16 @@ public class ProductoController {
     public String createForm(Model model) {
         model.addAttribute("producto", new Producto());
         model.addAttribute("categorias", categoriaRepository.findAll());
-
-        return "producto/producto-form";
+        return "producto/producto-form-new";
     }
+    /*
+    @PostMapping("/productos")
+    public String saveForm(Model model){
+
+        productoRepository.save(producto);
+        return "redirect:/productos";
+    }
+    */
 
     // mostrar formulario para editar producto existente
     @GetMapping("/productos/{id}/editar")
@@ -80,10 +87,9 @@ public class ProductoController {
         } else {
             model.addAttribute("error", "Producto no encontrado");
         }
-
         return "producto/producto-form";
     }
-/*
+
     // procesar formulario (crear o actualizar)
     @PostMapping("/productos") // podría ser @PostMapping("/productos/form") si en el formulario pusiera th:action="@{/productos/form}"
     public String saveForm(@ModelAttribute Producto producto) {
@@ -91,7 +97,7 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
-
+/*
     // FILTROS
     // filtrar productos por categoria
     @GetMapping("/productos/categoria/{categoriaId}") // http://localhost:8080/productos/categoria/1

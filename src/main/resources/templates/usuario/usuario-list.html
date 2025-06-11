@@ -35,8 +35,6 @@
                 </a>
             </div>
 
-
-
         <div class="card-body">
 
             <div th:unless="${usuarios.isEmpty()}" class="table-responsive">
@@ -51,9 +49,9 @@
                     </thead>
                     <tbody>
                     <tr th:each="usuario : ${usuarios}">
-                        <td th:text="${usuario.id}">1</td>
-                        <td th:text="${usuario.nombreUsuario}">Nombre</td>
-                        <td th:text="${usuario.email}">email@example.com</td>
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.nombreUsuario}"></td>
+                        <td th:text="${usuario.email}"></td>
                         <td>
                             <a th:href="@{'/usuarios/' + ${usuario.id}}" class="btn btn-info btn-sm">Ver</a>
                             <a th:href="@{'/usuarios/actualizar/' + ${usuario.id}}"
