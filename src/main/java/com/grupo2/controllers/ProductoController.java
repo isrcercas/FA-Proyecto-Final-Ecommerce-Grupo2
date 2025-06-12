@@ -65,7 +65,7 @@ public class ProductoController {
     public String createForm(Model model) {
         model.addAttribute("producto", new Producto());
         model.addAttribute("categorias", categoriaRepository.findAll());
-        return "producto/producto-form-new";
+        return "producto/producto-form";
     }
     /*
     @PostMapping("/productos")

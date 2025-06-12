@@ -44,14 +44,14 @@
                     <div class="card-text">
                     <strong class="text-secondary">Descripcion:</strong>
                     <span th:text="${producto.descripcion}" class="ms-2"></span></div>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
                     <div>
                         <strong>Precio:</strong> <span th:text="${#numbers.formatDecimal(producto.precio, 1, 2)} + ' €'"></span>
                     </div>
                     <div>
                         <strong>Stock:</strong> <span th:text="${producto.stock}"></span>
                     </div>
-                  </div>
+                </div>
                 <div class="card-footer bg-transparent d-flex justify-content-end">  <!-- Añadido d-flex y justify-content-end -->
                     <a th:href="@{/productos}" class="btn btn-outline-primary">
                         <i class="bi bi-arrow-left"></i> Volver al listado de productos
