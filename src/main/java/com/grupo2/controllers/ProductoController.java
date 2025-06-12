@@ -97,7 +97,6 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
-/*
     // FILTROS
     // filtrar productos por categoria
     @GetMapping("/productos/categoria/{categoriaId}") // http://localhost:8080/productos/categoria/1
@@ -112,13 +111,14 @@ public class ProductoController {
 
     // filtrar productos por nombre
     @GetMapping("/productos/buscar") // http://localhost:8080/productos/buscar?nombre=manzana
-    public String findByNombre(Model model, @RequestParam("nombre") String nombre) {
+    public String findByNombreContainsIgnoreCase(Model model, @RequestParam("nombre") String nombre) {
         List<Producto> productos = productoRepository.findByNombreContainsIgnoreCase(nombre);
+
         model.addAttribute("productos", productos);
-        model.addAttribute("categorias", categoriaRepository.findAll());
+        //model.addAttribute("categorias", categoriaRepository.findAll());
         model.addAttribute("busquedaActual", nombre);
 
         return "producto/producto-list";
     }
-*/
+
 }

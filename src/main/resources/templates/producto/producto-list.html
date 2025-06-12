@@ -35,17 +35,17 @@
                 </a>
                 <div>
                     <h3>Buscar por producto</h3>
-                    <form action="@{/categorias/buscar}" method="get">
+                    <form th:action="@{/productos/buscar}" method="post">
                         <input type="text"
-                               name="categoria"
+                               name="producto"
                                th:value="${busquedaActual}"
-                               placeholder="busca una categoria"
+                               placeholder="busca un producto"
                                minlength="3"></input>
                         <button class="btn btn-sm btn-outline-Success" type="submit">
                             <i class="bi bi-search"></i></button>
+                        <a th:href="@{/productos}" class="btn btn-secondary">Limpiar</a>
                     </form>
-                    <div><a href="@{/categorias}">Limpiar filtro</a></div>
-                    <div if="${busquedaActual}">
+                    <div th:if="${busquedaActual}">
                         <p>Resultados de la busqueda para: <strong text="${busquedaActual}"></strong></p>
                     </div>
                 </div>
