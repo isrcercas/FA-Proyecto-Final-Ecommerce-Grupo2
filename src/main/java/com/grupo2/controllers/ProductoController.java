@@ -37,7 +37,7 @@ public class ProductoController {
         return "producto/producto-list";
     }
 
-    @GetMapping("/") // http://localhost:8082/index.html
+    @GetMapping("/reindex") // http://localhost:8082/index.html
     public String findAllIndex(Model model) {
         // crear una lista con todos los productos
         List<Producto> productos = productoRepository.findAll();
@@ -45,6 +45,16 @@ public class ProductoController {
         model.addAttribute("categorias", categoriaRepository.findAll());
 
         return "index";
+    }
+
+    @GetMapping("/") // http://localhost:8082/index.html
+    public String findAllReIndex(Model model) {
+        // crear una lista con todos los productos
+        List<Producto> productos = productoRepository.findAll();
+        model.addAttribute("productos", productos);
+        model.addAttribute("categorias", categoriaRepository.findAll());
+
+        return "reindex";
     }
 
     @GetMapping("/productos/{id}") // http://localhost:8082/productos/1
