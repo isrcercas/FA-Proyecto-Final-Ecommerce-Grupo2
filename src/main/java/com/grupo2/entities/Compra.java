@@ -17,17 +17,15 @@ public class Compra {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetalleCompra> detalles = new ArrayList<>();
 
     public Compra() {
     }
 
-    public Compra(LocalDate fechaDeCompra, Double total, Usuario usuario, List<DetalleCompra> detalles) {
+    public Compra(LocalDate fechaDeCompra, Double total, Usuario usuario) {
         this.fechaDeCompra = fechaDeCompra;
         this.total = total;
         this.usuario = usuario;
-        this.detalles = detalles;
+
     }
 
     public Long getId() {
@@ -62,13 +60,7 @@ public class Compra {
         this.usuario = usuario;
     }
 
-    public List<DetalleCompra> getDetalles() {
-        return detalles;
-    }
 
-    public void setDetalles(List<DetalleCompra> detalles) {
-        this.detalles = detalles;
-    }
 
     @Override
     public String toString() {
@@ -77,7 +69,7 @@ public class Compra {
                 ", fechaDeCompra=" + fechaDeCompra +
                 ", total=" + total +
                 ", usuario=" + usuario +
-                ", detalles=" + detalles +
+
                 '}';
     }
 }
