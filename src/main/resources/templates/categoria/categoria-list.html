@@ -36,6 +36,21 @@
           <h3>Buscar por categoria</h3>
           <form th:action="@{/categorias/buscar}" method="get">
             <input type="text"
+                   name="nombre"
+                   th:value="${busquedaActual}"
+                   placeholder="Escriba el nombre de la categoría">
+            <button type="submit">Buscar</button>
+            <a th:href="@{/categorias}">Limpiar</a>
+          </form>
+
+          <div th:if="${busquedaActual}">
+            <p>Resultados de búsqueda para: "<strong th:text="${busquedaActual}"></strong>"</p>
+          </div>
+
+
+          <!--
+          <form th:action="@{/categorias/buscar}" method="get">
+            <input type="text"
                    name="categoria"
                    th:value="${busquedaActual}"
                    placeholder="busca una categoria"
@@ -46,7 +61,7 @@
           <div><a th:href="@{/categorias}">Limpiar filtro</a></div>
           <div th:if="${busquedaActual}">
             <p>Resultados de la busqueda para: <strong th:text="${busquedaActual}"></strong></p>
-          </div>
+          </div> -->
         </div>
 
       </div>

@@ -96,7 +96,7 @@ public class UsuarioController {
 
     } //formulario de registro
 
-    /*
+
     @PostMapping("/usuarios/registro")
     public String registrarUsuario(@RequestParam String nombre,
                                    @RequestParam String email,
@@ -120,7 +120,7 @@ public class UsuarioController {
 
         return "redirect:/usuarios"; // redirige a la lista
 
-    }*/
+    }
 
 }
 
