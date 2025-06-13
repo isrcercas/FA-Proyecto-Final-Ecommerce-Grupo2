@@ -37,12 +37,12 @@
                     <h3>Buscar por producto</h3>
                     <form th:action="@{/productos/buscar}" method="get" class="d-flex gap-2 mb-3">
                         <input type="text"
-                               name="producto"
+                               name="nombre"
                                th:value="${busquedaActual}"
-                               placeholder="busca un producto"
-                               minlength="3"></input>
-                        <button class="btn btn-sm btn-outline-Success" type="submit">
-                            <i class="bi bi-search"></i></button>
+                               placeholder="Escriba el nombre del producto"
+                               minlength="3"
+                               class="form-control">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
                         <a th:href="@{/productos}" class="btn btn-secondary">Limpiar</a>
                     </form>
                     <div th:if="${busquedaActual}">
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 
 
