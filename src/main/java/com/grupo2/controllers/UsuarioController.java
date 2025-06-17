@@ -31,36 +31,6 @@ public class UsuarioController {
         return "usuario/usuario-list";
     }
 
-/*
-    // Mostrar formulario de login
-    @GetMapping("/login")
-    public String mostrarFormularioLogin() {
-        return "usuario/usuario-form";
-    }
-
-    // Login simple
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password, Model model) {
-        Optional<Usuario> usuario = usuarioRepository.findByEmailAndPassword(email, password);
-
-        if (usuario.isPresent()) {
-            model.addAttribute("usuario", usuario.get());
-            return "usuario/usuario-detail";
-        } else {
-            model.addAttribute("error", "Credenciales incorrectas");
-            return "usuario/usuario-form";
-        }
-    }
-    /*
-    // Obtener todos los usuarios
-    @GetMapping("/lista")
-    public String obtenerTodosLosUsuarios(Model model) {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-        model.addAttribute("usuarios", usuarios);
-        return "usuario/usuario-list";
-    }
-*/
-
     // Obtener usuario por ID
     @GetMapping("/usuarios/{id}")
     public String obtenerUsuarioPorId(@PathVariable Long id, Model model) {
@@ -68,7 +38,7 @@ public class UsuarioController {
 
         if (usuario.isPresent()) {
             model.addAttribute("usuario", usuario.get());
-            return "usuario/usuario-detail";
+            return "usuario/usuario-form";
         } else {
             model.addAttribute("error", "Usuario no encontrado");
             List<Usuario> usuarios = usuarioRepository.findAll();
