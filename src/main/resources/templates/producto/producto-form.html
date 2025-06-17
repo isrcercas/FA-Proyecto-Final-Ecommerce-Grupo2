@@ -37,8 +37,8 @@
 
           <h1 th:text="${producto.id != null ? 'Modificar Producto ' : 'Crear nuevo Producto'}"></h1>
 
-
         </div>
+
         <div class="card-body ">
           <form th:action="@{/productos}" th:object="${producto}" method="post">
 

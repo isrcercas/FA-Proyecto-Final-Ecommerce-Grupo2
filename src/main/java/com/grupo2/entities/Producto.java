@@ -20,6 +20,10 @@ public class Producto {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    @ManyToOne
+    @JoinColumn(name = "compra_id")
+    private Compra compra;
+
     public Producto() {
     }
 
@@ -30,6 +34,14 @@ public class Producto {
         this.stock = stock;
         this.imageUrl = imageUrl;
         this.categoria = categoria;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     public Long getId() {
@@ -98,6 +110,7 @@ public class Producto {
                 ", stock=" + stock +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", categoria=" + categoria +
+                ", compra=" + compra +
                 '}';
     }
 }
