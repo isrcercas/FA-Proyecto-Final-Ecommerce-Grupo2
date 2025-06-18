@@ -19,6 +19,7 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     public UsuarioController(UsuarioRepository usuarioRepository) {
+
         this.usuarioRepository = usuarioRepository;
     }
 
@@ -38,7 +39,7 @@ public class UsuarioController {
 
         if (usuario.isPresent()) {
             model.addAttribute("usuario", usuario.get());
-            return "usuario/usuario-form";
+            return "usuario/usuario-detail";
         } else {
             model.addAttribute("error", "Usuario no encontrado");
             List<Usuario> usuarios = usuarioRepository.findAll();
@@ -57,15 +58,19 @@ public class UsuarioController {
             model.addAttribute("error", "Usuario no encontrado");
             return "redirect:/usuarios";  // O rediriges a la lista con mensaje
         }
-    }//registrar nuevo usuario
+
+    }
+    //registrar nuevo usuario
 
     @GetMapping("/usuarios/registro")
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("usuario", new Usuario()); // usuario vacío
         return "usuario/usuario-form";
 
-    } //formulario de registro
 
+    }
+
+    //formulario de registro
 
     @PostMapping("/usuarios/registro")
     public String registrarUsuario(@RequestParam String nombre,
@@ -77,7 +82,7 @@ public class UsuarioController {
         if (usuarioRepository.findByEmail(email).isPresent()) {
             model.addAttribute("error", "Ya existe un usuario con este email");
             model.addAttribute("usuario", new Usuario()); // Para que no se rompa el formulario
-            return "usuario/usuario-form";
+           return "usuario/usuario-form";
         }
 
         Usuario usuario = new Usuario();
