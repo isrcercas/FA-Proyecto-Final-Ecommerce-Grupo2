@@ -26,10 +26,17 @@
     <h2 th:text="${usuario.id != null} ? 'Editar Usuario' : 'Crear Usuario'"></h2>
 
     <!-- Mostrar mensaje de error o confirmación -->
-    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}">
+        <!--<i class="bi bi-exclamation-triangle-fill"></i>
+        <strong>Error:</strong> No se ha podido crear el usuario.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+    </div>
+
     <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
 
-    <form th:action="@{${usuario.id} != null ? '/usuarios/actualizar/' + ${usuario.id} : '/usuarios/registro'}" method="post">
+
+
+    <form th:action="@{${usuario.id} != null ? '/usuarios/actualizar/' + ${usuario.id} : '/usuarios/registro'}" method="get">
 
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>

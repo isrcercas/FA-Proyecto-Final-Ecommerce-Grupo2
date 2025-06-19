@@ -32,6 +32,10 @@ public class UsuarioController {
         return "usuario/usuario-list";
     }
 
+
+
+
+    /*
     // Obtener usuario por ID
     @GetMapping("/usuarios/{id}")
     public String obtenerUsuarioPorId(@PathVariable Long id, Model model) {
@@ -58,7 +62,7 @@ public class UsuarioController {
             model.addAttribute("error", "Usuario no encontrado");
             return "redirect:/usuarios";  // O rediriges a la lista con mensaje
         }
-
+        
     }
     //registrar nuevo usuario
 
@@ -66,12 +70,10 @@ public class UsuarioController {
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("usuario", new Usuario()); // usuario vacío
         return "usuario/usuario-form";
-
-
     }
 
     //formulario de registro
-
+/*
     @PostMapping("/usuarios/registro")
     public String registrarUsuario(@RequestParam String nombre,
                                    @RequestParam String email,
@@ -82,7 +84,8 @@ public class UsuarioController {
         if (usuarioRepository.findByEmail(email).isPresent()) {
             model.addAttribute("error", "Ya existe un usuario con este email");
             model.addAttribute("usuario", new Usuario()); // Para que no se rompa el formulario
-           return "usuario/usuario-form";
+
+            return "usuario/usuario-form";
         }
 
         Usuario usuario = new Usuario();
@@ -96,6 +99,5 @@ public class UsuarioController {
         return "redirect:/usuarios"; // redirige a la lista
 
     }
-
+*/
 }
-

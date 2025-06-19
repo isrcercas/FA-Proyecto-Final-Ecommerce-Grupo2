@@ -67,7 +67,6 @@
                         <th>Precio</th>
                         <th>Stock</th>
                         <th>Categoría</th>
-                        <!--<th>Imagen</th>-->
                         <th>Acciones</th>
                     </tr>
                     </thead>
@@ -80,7 +79,7 @@
                                  style="width: 55px; height: 55px; object-fit: cover;"></td>
                         <td th:text="${producto.id}"></td>
                         <td th:text="${producto.nombre}"></td>
-                        <!--<td th:text="${producto.descripcion}"></td>-->
+
                         <td th:text="${#numbers.formatDecimal(producto.precio, 1, 2)} + ' €'"></td>
                         <td>
                                     <span th:text="${producto.stock} + (${producto.stock == 1} ? ' unidad' : ' unidades')"
@@ -88,7 +87,7 @@
                                     </span>
                         </td>
                         <td th:text="${producto.categoria != null ? producto.categoria.nombre : 'Sin categoría'}"></td>
-                        <!-- <td th:text="${producto.imageUrl != null ? producto.imageUrl : 'Sin imagen'}"></td> -->
+
                         <td>
                             <div class="d-flex gap-1">
                                 <a th:href="@{/productos/{id}(id=${producto.id})}" class="btn btn-primary btn-sm w-100">
