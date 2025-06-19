@@ -55,6 +55,11 @@
                         <td>
                             <a th:href="@{/usuarios/{id}(id=${usuario.id})}" class="btn btn-info btn-sm">Ver</a>
                             <a th:href="@{/usuarios/actualizar/{id}(id=${usuario.id})}" class="btn btn-warning btn-sm">Editar</a>
+                            <form action="" method="post" class="d-inline">
+                                <button class="btn btn-danger btn-sm" type="submit">Eliminar
+
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     </tbody>
