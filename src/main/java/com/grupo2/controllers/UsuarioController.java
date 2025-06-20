@@ -1,8 +1,6 @@
 package com.grupo2.controllers;
 
 
-import com.grupo2.entities.Categoria;
-import com.grupo2.entities.Compra;
 import com.grupo2.entities.Usuario;
 import com.grupo2.repositories.UsuarioRepository;
 import org.springframework.stereotype.Controller;
@@ -31,71 +29,47 @@ public class UsuarioController {
 
         return "usuario/usuario-list";
     }
-
-
-    /*
-    // Obtener usuario por ID
     @GetMapping("/usuarios/{id}")
-    public String obtenerUsuarioPorId(@PathVariable Long id, Model model) {
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
+    public String usuarioView(Model model, @PathVariable Long id){
 
-        if (usuario.isPresent()) {
-            model.addAttribute("usuario", usuario.get());
-            return "usuario/usuario-detail";
-        } else {
-            model.addAttribute("error", "Usuario no encontrado");
-            List<Usuario> usuarios = usuarioRepository.findAll();
-            model.addAttribute("usuarios", usuarios);
-            return "usuario/usuario-list";
-        }
-    }      //actualizar usuario//
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
 
-    @GetMapping("/usuarios/actualizar/{id}")
-    public String mostrarFormularioActualizar(@PathVariable Long id, Model model) {
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
-        if (usuario.isPresent()) {
-            model.addAttribute("usuario", usuario.get());
-            return "usuario/usuario-form";  // Aquí se carga el formulario con los datos del usuario
-        } else {
+        if(usuarioOpt.isPresent()){
+            model.addAttribute("usuario", usuarioOpt.get());
+        }else{
             model.addAttribute("error", "Usuario no encontrado");
-            return "redirect:/usuarios";  // O rediriges a la lista con mensaje
         }
-        
+
+        return "usuario/usuario-detail";
     }
-    //registrar nuevo usuario
 
-    @GetMapping("/usuarios/registro")
-    public String mostrarFormularioRegistro(Model model) {
-        model.addAttribute("usuario", new Usuario()); // usuario vacío
+    @GetMapping("/usuarios/{id}/editar")
+    public String usuarioEdit(Model model, @PathVariable Long id){
+
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
+
+        if(usuarioOpt.isPresent()){
+            model.addAttribute("usuario", usuarioOpt.get());
+        }else{
+            model.addAttribute("error", "404 Categoria no encontrada");
+        }
+    return "usuario/usuario-form";
+    }
+
+    @GetMapping("usuarios/nuevo")
+    public String usuarioNew(Model model){
+
+        model.addAttribute("usuario", new Usuario());
+
         return "usuario/usuario-form";
     }
 
-    //formulario de registro
-/*
-    @PostMapping("/usuarios/registro")
-    public String registrarUsuario(@RequestParam String nombre,
-                                   @RequestParam String email,
-                                   @RequestParam String password,
-                                   @RequestParam String direccion,
-                                   Model model) {
-
-        if (usuarioRepository.findByEmail(email).isPresent()) {
-            model.addAttribute("error", "Ya existe un usuario con este email");
-            model.addAttribute("usuario", new Usuario()); // Para que no se rompa el formulario
-
-            return "usuario/usuario-form";
-        }
-
-        Usuario usuario = new Usuario();
-        usuario.setNombreUsuario(nombre);
-        usuario.setEmail(email);
-        usuario.setPassword(password);
-        usuario.setDireccion(direccion);
-
+    @PostMapping("/usuarios")
+    public String usuarioSave(@ModelAttribute Usuario usuario){
         usuarioRepository.save(usuario);
 
-        return "redirect:/usuarios"; // redirige a la lista
-
+        return "redirect:/usuarios";
     }
-*/
+
+
 }

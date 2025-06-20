@@ -36,22 +36,22 @@
             </div>
             <div class="row g-0">
                 <div class="col-md-8">
-                        <div class="card-text">
-                            <strong class="text-secondary">Password:</strong>
-                            <span th:text="${usuario.password}" class="ms-2"></span></div>
-                        <div>
-                            <strong>Email:</strong>
-                            <span th:text="${usuario.email}"></span>
-                        </div>
-                        <div>
-                            <strong>Dirección:</strong> <span th:text="${usuario.direccion}"></span>
-                        </div>
-                    </div>
-                    <div class="card-footer bg-transparent d-flex justify-content-end">  <!-- Añadido d-flex y justify-content-end -->
-                        <a th:href="@{/usuarios}" class="btn btn-outline-primary">
-                            <i class="bi bi-arrow-left"></i> Volver al listado de usuarios
-                        </a>
-                    </div>
+                    <strong>Email:</strong>
+                    <span th:text="${usuario.email}"></span>
+                </div>
+                <div class="card-text">
+                    <strong>Password:</strong>
+                    <span th:text="${usuario.password}" class="ms-2"></span></div>
+                <div>
+                <div>
+                    <strong>Dirección:</strong> <span th:text="${usuario.direccion}"></span>
+                </div>
+                </div>
+                <div class="card-footer bg-transparent d-flex justify-content-end">  <!-- Añadido d-flex y justify-content-end -->
+                    <a th:href="@{/usuarios}" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left"></i> Volver al listado de usuarios
+                    </a>
+                </div>
                 </div>
             </div>
         </div>

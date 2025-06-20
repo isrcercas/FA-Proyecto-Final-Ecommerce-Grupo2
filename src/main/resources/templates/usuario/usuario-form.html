@@ -21,54 +21,61 @@
 
 <!-- Navigation -->
 <div th:include="partials/template_admin.html::header"></div>
+
 <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
 
-    <h2 th:text="${usuario.id != null} ? 'Editar Usuario' : 'Crear Usuario'"></h2>
+                    <h1 th:text="${usuario.id != null} ? 'Editar Usuario' : 'Crear Usuario'"></h1>
 
-    <!-- Mostrar mensaje de error o confirmación -->
-    <div th:if="${error}" class="alert alert-danger" th:text="${error}">
-        <!--<i class="bi bi-exclamation-triangle-fill"></i>
-        <strong>Error:</strong> No se ha podido crear el usuario.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                </div>
+
+    <!--<div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>-->
+            <div class="card-body ">
+                        <!--<form th:action="@{${usuario.id} != null ? '/usuarios/actualizar/' + ${usuario.id} : '/usuarios'}" method="get">-->
+                        <form th:action="@{/usuarios}" th:object="${usuario}" method="post">
+
+                            <!--<input type="hidden" th:field="*{id}">-->
+
+                            <div class="mb-3">
+                                <label for="nombreUsuario" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombreUsuario" th:field="*{nombreUsuario}"
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" th:field="*{email}"
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" th:field="*{password}"
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="direccion" th:field="*{direccion}">
+                            </div>
+                            <div class="d-flex justify-content-between">
+                            <a th:href="@{/usuarios}" class="btn btn-secondary">Cancelar</a>
+
+                            <button type="submit" class="btn btn-primary">
+                                <span th:text="${usuario.id != null} ? 'Actualizar' : 'Guardar'"></span>
+                            </button>
+                            </div>
+
+                        </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
-
-
-
-    <form th:action="@{${usuario.id} != null ? '/usuarios/actualizar/' + ${usuario.id} : '/usuarios/registro'}" method="get">
-
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre"
-                   th:value="${usuario.nombreUsuario}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email"
-                   th:value="${usuario.email}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password"
-                   th:value="${usuario.password}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccion"
-                   th:value="${usuario.direccion}">
-        </div>
-
-        <button type="submit" class="btn btn-primary">
-            <span th:text="${usuario.id != null} ? 'Actualizar' : 'Registrar'"></span>
-        </button>
-
-        <a href="/usuarios" class="btn btn-secondary">Volver a la lista</a>
-    </form>
 </div>
+
 <!-- Bloque Footer -->
 <div th:include="partials/template_admin.html::footer"></div>
 
