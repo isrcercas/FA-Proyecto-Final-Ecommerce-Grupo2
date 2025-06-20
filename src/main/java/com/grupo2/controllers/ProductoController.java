@@ -107,6 +107,21 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
+
+    // eliminar producto
+    @PostMapping("/productos/{id}/eliminar")
+    public String delete(@PathVariable Long id) {
+        // buscar el producto
+        Optional<Producto> productoOpt = productoRepository.findById(id);
+        if (productoOpt.isPresent()) {
+            // borrar el producto
+            productoRepository.deleteById(id);
+        }
+        return "redirect:/productos";
+    }
+
+
+
     // FILTROS
     // filtrar productos por categoria
     @GetMapping("/productos/categoria/{categoriaId}") // http://localhost:8080/productos/categoria/1
