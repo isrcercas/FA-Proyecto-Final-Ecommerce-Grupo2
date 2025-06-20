@@ -71,5 +71,12 @@ public class UsuarioController {
         return "redirect:/usuarios";
     }
 
+    @PostMapping("/usuarios/{id}/eliminar")
+    public String usuarioDelete(@PathVariable Long id){
+
+        usuarioRepository.deleteById(id);
+
+        return "redirect:/usuarios";
+    }
 
 }

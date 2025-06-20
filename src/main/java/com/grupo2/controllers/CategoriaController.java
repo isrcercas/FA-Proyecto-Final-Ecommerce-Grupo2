@@ -73,7 +73,7 @@ public class CategoriaController {
 
         return "redirect:/categorias";
     }
-/*
+
     @PostMapping("/categorias/{id}/eliminar")
     public String delete(@PathVariable Long id) {
         if (productoRepository.countByCategoria_Id(id) > 0) {
@@ -81,9 +81,9 @@ public class CategoriaController {
         }
         categoriaRepository.deleteById(id);
 
-        return "redirect:/categoria/categorias";
+        return "redirect:/categorias";
     }
-*/
+
     // filtrar categorías por nombre
     @GetMapping("/categorias/buscar") // http:localhost:8080/categorias/buscar?nombre=frutas
     public String findByName(Model model, @RequestParam("nombre") String nombre) {
