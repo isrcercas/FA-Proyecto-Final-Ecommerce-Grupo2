@@ -7,6 +7,7 @@ import com.grupo2.entities.Usuario;
 import com.grupo2.repositories.CompraRepository;
 import com.grupo2.repositories.ProductoRepository;
 import com.grupo2.repositories.UsuarioRepository;
+//import com.sun.beans.decoder.ArrayElementHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.AttributedString;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -64,19 +66,31 @@ public class CompraController {
         Producto producto = productoRepository.findById(productoId).orElseThrow();
         Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow();
 
+        AttributedString model = null;
+        if(compra.getCantidad() > producto.getStock()){
+            //model.addAttribute("compra",  "Cantidad mayor que Stock");
+            return "redirect:/compras";
+        }
+
         // Calcular total
         double total = producto.getPrecio() * compra.getCantidad();
+        Integer stock = producto.getStock() - compra.getCantidad();
+
+
 
         // Asignar valores
         compra.setProducto(producto);
         compra.setUsuario(usuario);
         compra.setTotal(total);
+        producto.setStock(stock);
 
         // Guardar en BD
-        compraRepository.save(compra);;
+        compraRepository.save(compra);
+        productoRepository.save(producto);
 
         return "redirect:/compras";
     }
+
 
 
 }
