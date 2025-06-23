@@ -56,21 +56,24 @@ public class CompraController {
         return "compra/compra-form";
     }
 
-
-
     // procesar formulario (crear o actualizar)
     @PostMapping("/compras") // podría ser @PostMapping("/compras/form") si en el formulario pusiera th:action="@{/compras/form}"
-    public String saveForm(@ModelAttribute("compra") Compra compra,
+    public String saveForm(Model model, @ModelAttribute("compra") Compra compra,
                            @RequestParam("productoId") Long productoId,
                            @RequestParam("usuarioId") Long usuarioId) {
         Producto producto = productoRepository.findById(productoId).orElseThrow();
         Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow();
 
-        AttributedString model = null;
+        //AttributedString model = null;
         if(compra.getCantidad() > producto.getStock()){
-            //model.addAttribute("compra",  "Cantidad mayor que Stock");
-            return "redirect:/compras";
+            model.addAttribute("error",  "Cantidad mayor que Stock");
+            model.addAttribute("compra", compra);
+            model.addAttribute("productos", productoRepository.findAll());
+            model.addAttribute("usuarios", usuarioRepository.findAll());
+
+            return "/compra/compra-form";
         }
+
 
         // Calcular total
         double total = producto.getPrecio() * compra.getCantidad();
