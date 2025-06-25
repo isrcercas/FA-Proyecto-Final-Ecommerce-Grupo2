@@ -98,7 +98,9 @@
 
                         <td th:text="${#numbers.formatDecimal(producto.precio, 1, 2)} + ' €'"></td>
                         <td>
-                            <span th:text="${producto.stock} + (${producto.stock == 1} ? ' unidad' : ' unidades')"></span>
+                            <span th:style="${producto.stock == 0} ? 'color: red; font-weight: bold;' :
+                                  (${producto.stock < 5} ? 'color: orange;' : 'color: green;')"
+                                  th:text="${producto.stock} + (${producto.stock == 1} ? ' unidad' : ' unidades')"></span>
                         </td>
                         <td th:text="${producto.categoria != null ? producto.categoria.nombre : 'Sin categoría'}"></td>
 
