@@ -74,12 +74,9 @@ public class CompraController {
             return "/compra/compra-form";
         }
 
-
         // Calcular total
         double total = producto.getPrecio() * compra.getCantidad();
         Integer stock = producto.getStock() - compra.getCantidad();
-
-
 
         // Asignar valores
         compra.setProducto(producto);

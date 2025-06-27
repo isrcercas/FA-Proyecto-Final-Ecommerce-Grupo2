@@ -71,11 +71,12 @@
                                 <option value="">-- Seleccione un producto --</option>
                                 <option th:each="pro : ${productos}"
                                         th:value="${pro.id}"
-                                        th:text="${pro.nombre + ' - $' + pro.precio}"
+                                        th:text="${pro.nombre + ' - ' + pro.precio + ' € - Stock: ' + pro.stock}"
                                         th:data-precio="${pro.precio}">
+
                                 </option>
                             </select>
-                        </div>
+                        </div>1
 
                         <!-- Total (solo lectura) -->
                         <div class="mb-3">
